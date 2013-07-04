@@ -1,0 +1,7 @@
+// Mixins perso
+
+@mixin background-properties($background_dimensions) {
+  @if $background_dimensions == 'cover' {
+    @include background-size($background_dimensions);
+  }
+}

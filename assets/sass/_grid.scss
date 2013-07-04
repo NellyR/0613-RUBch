@@ -1,0 +1,51 @@
+.container{
+  max-width: $max-width;
+  margin:auto;
+  #banner{
+    width:percentage(4/6);
+    float:left;
+  }
+  #pub{
+    width:percentage(2/6);
+    float:right;
+    background:black;
+    height:255px;
+  }
+  #menu{
+    li{
+      text-align:right;
+      text-transform:uppercase;
+      a{ color:#000; }
+      a, &.current{ font-weight:bold; }
+    } 
+  } 
+}
+.content {
+  @include container;
+  //@include susy-grid-background;
+  @include border-box-sizing;
+  max-width: $max-width - ($grid-padding*2);  
+}
+.col-1{
+  @include span-columns(6 omega,6);
+  margin-top:20px; 
+  &.border{
+    background:white;
+    position:relative;
+  }
+}
+.col-2{ 
+    @include span-columns(6,6); 
+    background:white;
+    margin-top:20px;
+    position:relative;
+    padding-bottom:40px;
+    @include at-breakpoint($break) {
+    	@include span-columns(2,6);	
+    }
+}
+.col-2.last{ 
+    @include at-breakpoint($break) {
+    	@include span-columns(2 omega, 6);	
+    } 
+}

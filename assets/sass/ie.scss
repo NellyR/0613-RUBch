@@ -1,0 +1,17 @@
+@media only screen and (max-width:1149px) {
+	.listing li{ margin-right:-6px; }
+	.listing li.der{ margin-right:-20px; }
+	.listing li span{ width:97px; }
+	.listing.grandes li span{ width:100%; }
+  	#message{
+    	padding:180px 120px 0px 120px;
+	}
+	#campagne{
+    	&>ul>li{
+	    	max-width:305px;
+	    	ul{
+	    		max-width:305px;
+	    	}
+		}
+	}
+} 

@@ -1,0 +1,26 @@
+
+/********* LOGO **************/
+// Taille réelle utilisée par défaut.
+$logo_url : "logo.png";
+
+/******** IMAGE DE FOND *******/
+// soit cover, soit default (image en taille réelle, en haut à gauche) 
+$background_dimensions : "cover";
+
+/******** JEU DE COULEURS ********/
+$couleur1 : #dc001a ; // rollover menu, rubrique active, titres h3
+$couleur2 : #851b63 ; // fond de titre de page
+
+/******* GRILLE ****************/
+$total-columns: 9;
+$column-width: 140px;
+$gutter-width: 16px;
+$grid-padding: 0px;
+$max-width:1150px;
+$container-style: fluid;
+$break:600px 12;
+@import "_stylesheet";
+@import "compass/reset";
+@import "compass/css3";
+@import "susy";
+

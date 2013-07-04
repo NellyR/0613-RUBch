@@ -1,0 +1,352 @@
+@import "base";
+@import "mixins";
+@import "grid";
+
+html, body{ 
+  height:100%;
+}
+
+
+// Classes pour extend
+.opaque{
+  @include opaque; //compass/css3
+}
+.transparent{
+  @include transparent; //compass/css3
+}
+.inline-block{
+  @include inline-block; //compass/css3 
+}
+.width-100{
+  width:100%;
+}
+.typoregular{
+  font-family: ChampagneLimousinesRegular;
+}
+.typobold{
+  font-family: ChampagneLimousinesBold;
+}
+
+body{
+  font-family:arial, helvetica, sans-serif;
+  background:url("../img/fond.png") center repeat-y;
+}
+a{
+  text-decoration:none;
+}
+header{
+  padding-top:5px;
+  margin-top:8px;
+  margin-bottom:8px;
+  nav{
+    clear:both;
+    background:url("../img/fond_menu.gif");
+    @extend .width-100;
+    height:38px;
+    padding:6px 10px 4px 10px;
+    font-size:23px;
+    @extend .typobold;
+    p{
+      display:inline;
+      color:#FFF;
+      float:left;
+    }
+    ul{
+      float:right;
+    }
+    li{
+      display:inline-block;
+      @extend .typoregular;
+      color:#939598;
+      a{
+        color:#939598;
+        &:hover, &:active, &.active{
+          color:#FFF;
+          @extend .typobold;
+        }
+      }
+    }
+
+  }
+}
+
+#partage_s{
+    background:url("../img/partage.jpg") no-repeat;
+    width:144px;
+    height:76px;
+    float:right; 
+    margin-top:5px;
+    &.partage{
+      background:url("../img/partage.png") no-repeat;
+      width:147px;
+      height:66px;
+      float:none; 
+      margin:auto;
+      margin-top:30px;
+      color:#000;
+    }
+
+  }
+  #nbFbShare, #nbTwShare{
+    height:50px;
+    display:block;
+    text-align:center;
+    margin-top:24px;
+    cursor:pointer;
+    width:57px;
+    @extend .typoregular;
+    font-size:18px;
+    .partage &{
+      height:57px;
+      padding-top:6px;
+      margin-top:5px;
+      width:60px; 
+    }   
+  }
+  #nbTwShare{   
+    float:left;
+    margin-left:2px;
+  }
+  #nbFbShare{
+    margin-right:7px;
+    float:right;
+  }
+h1{
+  margin-bottom:20px;
+  margin-top:5px;
+  float:left;
+  a{
+    text-indent:-5000em;
+    outline:none;
+    font-size:0.1em;
+    display:block;
+    header &{
+      background:url("../img/" + $logo_url) no-repeat;
+      width: image-width("../img/" + $logo_url); 
+      height:image-height("../img/" + $logo_url);
+    }  
+  }
+}
+/* responsive image */
+img{
+  max-width: 100%;
+  height: auto;
+}
+@media \0screen {
+  img { 
+    width: auto; /* for ie 8 */
+  }
+}
+.listing{
+  li{
+    display:inline-block;
+    margin-right:15px;
+    margin-top:27px;
+    @extend .typobold;
+    text-transform:uppercase;
+    font-size:17px;
+    &:last-child{
+      margin-right:0;
+    }
+    a{ color:#000; }
+    span{
+      height:30px;
+      display:block;
+      margin:0;
+      text-align:center;
+    }
+  }
+  &.grandes li{
+    background:url("../img/fond_legende.gif");
+    font-size:23px;
+    color:#FFF;
+    margin-right:27px;
+    text-transform:capitalize;
+    max-width:365px;
+    @include box-sizing("content-box");
+    width:33%;
+    a{ color:#FFF; }
+    img{width:100%;}
+    &:last-child{
+      margin-right:0;
+    }
+    span{
+      text-align:right;
+      padding-right:10px;    
+    }
+  }
+}
+h2{
+  text-transform:uppercase;
+  text-align:center;
+  background:url("../img/fond_news.gif") repeat-x left center;
+  margin-top:27px;
+  @extend .typobold;
+  font-size:24px;
+  color:#60b3c7;
+  span{
+    background:#FFF;
+    padding:5px 15px 5px 15px;
+  }
+}
+#campagne{
+  text-align:center;
+  margin-top:55px;
+  img{
+    margin-bottom:10px;
+  }
+  ul{
+    margin-bottom:100px;
+  }
+  li{
+    //text-align:center;
+    padding-top:3px;
+    padding-bottom:3px;
+  }
+  a{
+    font-size:18px;
+    @extend .typobold;
+    color:grey;
+    &:hover{
+      color:#000;
+    }
+  }
+  &>ul{
+    margin-top:60px;
+      &>li{
+        float:left;
+        padding-left:23px;
+        padding-right:23px;
+        text-align:left;
+        &:first-child{
+          padding-left:0px;
+        }
+        &:last-child{
+          padding-right:0px;
+        }
+      }
+  } 
+  h4{
+    font-size:30px;
+    padding-left:30px;
+    background:url("../img/picto_dl.png") top left no-repeat;
+    @extend .typobold;
+    color:grey;
+    display:inline-block;
+  }
+}
+#message{
+  background:url("../img/fond_message.jpg") no-repeat top left;
+  text-align:left;
+  width:100%;
+  height:724px;
+  @extend .typobold;
+  font-size:33px;
+  color:#FFF;
+  padding:217px;
+  padding-top:242px;
+  h4{
+    font-size:42px;
+    padding-left:80px;
+    padding-bottom:5px;
+    @extend .typoregular;
+    background:url("../img/picto_msg.png") top left no-repeat;
+    span{
+      @include opacity(0.6);
+    }
+  }  
+  p{
+    text-align:justify;
+  }
+}
+footer{
+  margin-bottom:15px;
+  margin-top:20px;
+  min-height:95px;
+  clear:both;
+  @extend .typobold;
+  background:url("../img/pic_walk.png") no-repeat top left;
+  background-repeat:no-repeat;
+  padding-left:85px;
+  position:relative;
+  h3{
+    font-size:40px;
+    padding-top:27px;
+  }
+  p{
+    float:left; 
+    font-size:19px;
+  }
+  &:after{
+    clear:both;
+  };
+}
+#spa{
+  background:url("../img/logo_spa.png");
+  text-indent:-5000em;
+  outline:none;
+  font-size:0.1em;
+  display:block;
+  width:244px;
+  height:76px;
+  position:absolute;
+  top:7px;
+  right:0;
+}
+
+@import "_flexslider";
+
+
+@media only screen and (max-width:3000px) {
+ .content{
+    width:960px;
+    padding-left:5px;
+    padding-right:5px;
+ }
+ h1{
+  a{
+    header &{
+      background:url("../img/logo-s.png") no-repeat;
+      width: 577px; 
+      height:49px;
+      margin-top:15px;
+      margin-bottom:8px;
+      }  
+    }
+  }
+  .listing{
+    li{
+      margin-right:10px;
+      font-size:15px;      
+      img{
+        max-width:97px;
+      }
+    }
+    &.grandes li{
+      font-size:23px;
+      margin-right:17px;
+      max-width:308px;
+      width:308px;
+      margin-top:17px;
+      img{
+        max-width:100%;
+        width:100%;
+      }
+    }
+  }
+  #campagne{
+    &>ul{
+      margin-top:60px;
+      &>li{
+        padding-left:10px;
+        padding-right:10px;
+        img{
+          max-width:305px;
+        };
+      }
+    }
+  }
+  #message{
+    padding:220px 221px 180px 220px;
+  }
+}

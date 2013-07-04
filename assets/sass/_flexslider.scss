@@ -1,0 +1,210 @@
+/*
+ * jQuery FlexSlider v1.8 http://flex.madebymufffin.com
+ * Copyright 2011, Tyler Smith
+ * Free to use under the MIT license. http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active {
+	outline: none;
+}
+//.slides,
+//.flex-control-nav,
+//.flex-direction-nav {
+//	margin: 0; 
+//	padding: 0; 
+//	list-style: none;
+//} 
+
+// FlexSlider Necessary Styles
+//*******************************/ 
+.flexslider {
+	@extend .width-100;
+}
+.flexslider .slides > li {
+	display: none; // Hide the slides before the JS is loaded. Avoids image jumping
+} 
+.flexslider .slides img {
+	max-width: 100%; 
+	display: block;
+}
+//.flex-pauseplay span {
+//	text-transform: capitalize;
+//}
+
+//Clearfix for the .slides element */
+.slides:after {
+	content: "."; 
+	display: block; 
+	clear: both; 
+	visibility: hidden; 
+	line-height: 0; 
+	height: 0;
+} 
+html[xmlns] .slides {
+	display: block;
+} 
+* html .slides {
+	height: 1%;
+}
+//*/
+// No JavaScript Fallback */
+// If you are not using another script, such as Modernizr, make sure you
+// include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+	display: block;
+}
+
+// FlexSlider Default Theme
+//*******************************/
+.flexslider { 
+	position: relative; 
+	zoom: 1;
+	.slides {
+		zoom: 1;
+		& > li {
+			position: relative; 
+			margin-bottom:0; 
+			overflow: hidden;
+		}
+	}
+}
+// Personnalisation :
+.flex-container {
+	zoom: 1; 
+	position: relative;
+}
+// Caption style / IE rgba() hack */
+.flex-direction-nav li a,
+.flex-direction-nav,
+.flex-control-nav.flex-control-thumbs img,
+.flex-control-nav.flex-control-thumbs {
+	@include transition(all .15s ease-in); //compass/css3
+}
+
+.flex-caption {
+	padding: 0 15px; 
+	position: absolute; 
+	left: 0px; 
+	bottom: 0px; 
+	line-height: 40px; 
+	color: white; 
+	margin: 0; 
+	float: left;  
+	background: black; 
+	background: rgba(#000, 0.8); 
+	font-size: 17px; 
+	@extend .transparent;
+	//left:120px; bottom:0px;
+	padding-bottom:20px;
+	@extend .width-100;
+}
+
+// Direction Nav
+.flex-direction-nav {
+	position: absolute; 
+	right: 20px; 
+	bottom: 20px; 
+	width: 61px; 
+	height: 40px;
+	.flexslider.showOnMouseover & {
+		@extend .transparent;
+		&:hover{
+			@extend .opaque;
+		}
+	}
+	li {
+		margin:0;
+		a {
+			width: 30px; 
+			height: 40px; 
+			margin: 0; 
+			display: block; 
+			cursor: pointer; 
+			text-indent: -9999px; 
+			float: left; 
+			background: #000 url(../slider/flex_slider/images/k-flex-nav.png) no-repeat top left;
+			//background-color: #000; 
+			background-color: rgba(#000, 0.9); 
+			//background-image:url(../slider/flex_slider/images/k-flex-nav.png); 
+			////background-repeat:no-repeat; 
+			background-position:0 0;
+			&:hover {
+				background-color:$couleur1;
+			}
+		}
+		.flex-next {
+			background-position:100% 0; 
+			margin-left:1px;
+		}
+		.disabled {
+			@include opacity(0.3); //compass/css3 
+			cursor: default;
+		}
+	}
+}
+// Control Nav 
+.flex-control-nav { 
+	width: 100%; 
+	position: absolute; 
+	bottom: 0; 
+	text-align: center; 
+	line-height:1; 
+	height:28px; 
+	padding-top:7px;
+	margin-bottom:8px;
+	li {
+		margin: 0 0 0 5px; 
+		@extend .inline-block;
+		&:first-child {
+			margin: 0;
+		}
+		a { 
+			@extend .inline-block; 
+			width: 18px; 
+			height: 17px; 
+			margin: 0; 
+			background:url("../img/pic_pattes_off.png");
+			cursor: pointer; 
+			text-indent: -9999px; 
+			position:relative;
+			&:hover,
+			&.flex-active {  
+				@extend .opaque; //compass/css3 
+				background:url("../img/pic_pattes_on.png");
+			}
+		}  
+	} 
+	&.flex-control-thumbs {
+		bottom: 20px; 
+		right: 20px; 
+		text-align: right; 
+		width: auto;
+		.flexslider.showOnMouseover & { 
+			@extend .transparent;
+		}
+		.flexslider.showOnMouseover:hover & {
+			@extend .opaque; //compass/css3
+		}
+		li {
+			@include box-shadow(black 0 0 0 4px inset); //compass/css3 
+		}
+		img {
+			max-height:40px; 
+			cursor:pointer; 
+			@include opacity(0.7); //compass/css3
+			position:relative;
+			@include box-shadow(black 0 0 3px); //compass/css3 
+		}
+		img.flex-active,
+		img:hover { 
+			@extend .opaque; //compass/css3
+			@include box-shadow(black 0 0 8px); //compass/css3  
+		}
+	}
+}
+
+.flex-control-nav.flex-control-thumbs + .flex-direction-nav {
+	bottom:80px;
+}
